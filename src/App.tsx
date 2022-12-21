@@ -3,6 +3,7 @@ import Element from "./components/Element";
 
 type TElement = {
   id: string;
+  time: number;
 };
 
 const App = () => {
@@ -10,13 +11,13 @@ const App = () => {
 
   const addItem = () => {
     const id = new Date().valueOf().toString();
-    setItems((prevState) => [...prevState, { id }]);
+    const time = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
+    console.log(time);
+    setItems((prevState) => [...prevState, { id, time }]);
   };
 
   const deleteItem = (id: string) => {
-    if (window.confirm("Delete element?")) {
-      setItems((prevState) => prevState.filter((item) => item.id !== id));
-    }
+    setItems((prevState) => prevState.filter((item) => item.id !== id));
   };
 
   return (
@@ -27,7 +28,12 @@ const App = () => {
       <ol className="list">
         {items.length > 0 ? (
           items.map((item) => (
-            <Element key={item.id} id={item.id} deleteItem={deleteItem} />
+            <Element
+              key={item.id}
+              id={item.id}
+              time={item.time}
+              deleteItem={deleteItem}
+            />
           ))
         ) : (
           <div>Список пуст</div>
