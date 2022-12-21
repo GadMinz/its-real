@@ -1,4 +1,5 @@
 import React from "react";
+import Element from "./components/Element";
 
 const App = () => {
   return (
@@ -6,7 +7,9 @@ const App = () => {
       <div className='create'>
         <button>Create</button>
       </div>
-
+        <ol className='list'>
+            <Element />
+        </ol>
     </div>
   );
 };
